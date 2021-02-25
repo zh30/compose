@@ -1,6 +1,18 @@
 {
   "name": "@axlejs/split-layout",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "main": "dist/split-layout.umd.js",
+  "module": "dist/split-layout.es5.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "rollup -c rollup.config.ts -w"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^11.2.0",
+    "lodash": "^4.17.21",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-typescript2": "^0.30.0"
+  }
 }
