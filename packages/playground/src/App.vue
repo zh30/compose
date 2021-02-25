@@ -1,15 +1,14 @@
 <template>
-  <div>hello word</div>
+  <split-layout></split-layout>
 </template>
-<style>
-.content {
-  width: 1366px;
-  height: 768px;
-  background-color: red;
-}
-</style>
+
 <script>
+import SplitLayoutVue from './components/SplitLayout.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    'split-layout': SplitLayoutVue
+  }
 }
 </script>
