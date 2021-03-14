@@ -9,7 +9,13 @@
   "repository": "https://github.com/axlejs/compose.git",
   "author": "Octo1996 <Octo1996@outlook.com>",
   "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf ./node_modules ./packages/*/node_modules ./packages/*/dist",
+    "dev:lib": "yarn workspace @axlejs/split-layout dev",
+    "dev": "yarn workspace playground dev"
+  },
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.13.1",
     "@rollup/plugin-json": "^4.1.0",
     "@types/lodash-es": "^4.17.4",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
@@ -20,6 +26,6 @@
     "eslint-plugin-vue": "^7.5.0",
     "lodash-es": "^4.17.21",
     "prettier": "^2.2.1",
-    "typescript": "^4.1.5"
+    "typescript": "~4.1.5"
   }
 }

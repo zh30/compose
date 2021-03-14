@@ -6,8 +6,13 @@
 </template>
 
 <script>
+import useLayout from '@axlejs/split-layout'
+
 export default {
-  name: 'SplitLayout'
+  name: 'SplitLayout',
+  setup() {
+    useLayout()
+  }
 }
 </script>
 
@@ -19,12 +24,15 @@ export default {
   border: 1px solid red;
   grid-template-columns: 30% 70%;
 }
+
 .fill-height {
   height: 100%;
 }
+
 .sidebar {
   background-color: rgb(253, 181, 86);
 }
+
 .content {
   background-color: rgb(46, 206, 126);
 }

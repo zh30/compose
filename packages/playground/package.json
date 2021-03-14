@@ -10,7 +10,8 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.1.4",
     "@vue/compiler-sfc": "^3.0.6",
-    "vite": "^2.0.3"
+    "vite": "^2.0.3",
+    "@axlejs/split-layout": "0.0.1"
   },
   "dependencies": {
     "vue": "^3.0.6"
