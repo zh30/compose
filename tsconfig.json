@@ -1,23 +1,29 @@
 {
   "compilerOptions": {
-    "module": "esnext",
+    "baseUrl": ".",
+    "outDir": "dist",
+    "sourceMap": false,
     "target": "esnext",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "baseUrl": "./packages",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "strict": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "jsx": "preserve",
+    "lib": ["esnext", "dom"],
+    "types": ["node"],
+    "rootDir": ".",
     "paths": {
-      "@axlejs/*": [
-        "packages/*/src"
-      ]
+      "@axlejs/*": ["packages/*/src"]
     }
   },
   "include": [
-    "packages/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "lib"
+    "packages/global.d.ts",
+    "packages/*/src",
+    "packages/*/__tests__"
   ]
 }

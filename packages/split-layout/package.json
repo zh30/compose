@@ -3,8 +3,16 @@
   "version": "0.0.1",
   "main": "dist/split-layout.umd.js",
   "module": "dist/split-layout.es5.js",
-  "types": "types/index.d.ts",
+  "types": "dist/split-layout.d.ts",
   "license": "MIT",
+  "buildOptions": {
+    "formats": [
+      "esm",
+      "umd",
+      "global"
+    ],
+    "entry": "src/index.ts"
+  },
   "scripts": {
     "dev": "rollup -c rollup.config.ts -w",
     "build": "rollup -c rollup.config.ts",

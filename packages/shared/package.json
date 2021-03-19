@@ -1,0 +1,18 @@
+{
+  "name": "@axlejs/shared",
+  "version": "0.0.1",
+  "main": "dist/shared.umd.js",
+  "module": "dist/shared.es5.js",
+  "types": "dist/shared.d.ts",
+  "license": "MIT",
+  "buildOptions": {
+    "formats": [
+      "esm",
+      "umd",
+      "global"
+    ],
+    "entry": "src/index.ts"
+  },
+  "devDependencies": {
+  }
+}
