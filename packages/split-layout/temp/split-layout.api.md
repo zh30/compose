@@ -4,16 +4,11 @@
 
 ```ts
 
-// @public (undocumented)
-export type ScopedId = symbol;
-
 // Warning: (ae-forgotten-export) The symbol "elements" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "SplitOptions" needs to be exported by the entry point index.d.ts
 //
 // @public
-function useLayout(elements: elements, options: SplitOptions): void;
-
-export default useLayout;
+export function useLayout(elements: elements, options: SplitOptions): void;
 
 
 // (No @packageDocumentation comment for this package)

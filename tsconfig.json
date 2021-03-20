@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist",
     "sourceMap": false,
     "target": "esnext",
     "module": "esnext",
@@ -14,11 +13,18 @@
     "esModuleInterop": true,
     "removeComments": false,
     "jsx": "preserve",
-    "lib": ["esnext", "dom"],
-    "types": ["node"],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "node"
+    ],
     "rootDir": ".",
     "paths": {
-      "@axlejs/*": ["packages/*/src"]
+      "@axlejs/*": [
+        "packages/*/src"
+      ]
     }
   },
   "include": [

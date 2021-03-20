@@ -1,9 +1,9 @@
 import path from 'path'
 
-import replace     from '@rollup/plugin-replace'
+import commonjs    from '@rollup/plugin-commonjs'
 import json        from '@rollup/plugin-json'
 import nodeResolve from '@rollup/plugin-node-resolve'
-import commonjs    from 'rollup-plugin-commonjs'
+import replace     from '@rollup/plugin-replace'
 import sourceMaps  from 'rollup-plugin-sourcemaps'
 import typescript  from 'rollup-plugin-typescript2'
 import { terser }  from 'rollup-plugin-terser'
@@ -19,7 +19,7 @@ const resolve = (filename) => path.resolve(pkgDir, filename)
 
 const name = path.basename(pkgDir)
 const pkg = require(resolve('package.json'))
-console.log('name', name)
+
 const pkgOptions = pkg.buildOptions || {}
 const defaultFormats = ['esm', 'umd']
 const inlineFormats = process.env.FORMATS && process.env.FORMATS.split(',')
@@ -28,7 +28,7 @@ const packageFormats = inlineFormats || pkgOptions.formats || defaultFormats
 const isProduction = process.env.NODE_ENV === 'production'
 
 const outputConfigs = {
-  'esm': {
+  esm: {
     file: resolve(`dist/${name}.esm.js`),
     format: 'es'
   },
@@ -36,6 +36,10 @@ const outputConfigs = {
     file: resolve(`dist/${name}.umd.js`),
     name: camelCase(name),
     format: 'umd'
+  },
+  cjs: {
+    file: resolve(`dist/${name}.cjs.js`),
+    format: 'cjs'
   },
   global: {
     file: resolve(`dist/${name}.global.js`),
@@ -62,7 +66,7 @@ function createMinifiedConfig(format) {
     format,
     {
       ...outputConfigs[format],
-      file: outputConfigs[format].file.replace(/\.js$/, '.prod.js'),
+      file: outputConfigs[format].file.replace(/\.js$/, '.prod.js')
     },
     [
       terser({
@@ -104,8 +108,7 @@ function createConfig(format, output, plugins = []) {
       ),
       nodeResolve(),
       sourceMaps(),
-      ...
-        plugins
+      ...plugins
     ]
   }
 }

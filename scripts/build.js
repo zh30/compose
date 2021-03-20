@@ -104,10 +104,10 @@ async function build(target) {
       extractorConfigPath
     )
     const extractorResult = Extractor.invoke(extractorConfig, {
-      localBuild: true,
+      localBuild: false,
       showVerboseMessages: true
     })
-
+    //
     if (extractorResult.succeeded) {
       // concat additional d.ts to rolled-up dts
       const typesDir = path.resolve(pkgDir, 'types')

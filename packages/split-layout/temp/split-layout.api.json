@@ -16,38 +16,13 @@
       "name": "",
       "members": [
         {
-          "kind": "TypeAlias",
-          "canonicalReference": "@axlejs/split-layout!ScopedId:type",
-          "docComment": "",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export declare type ScopedId = "
-            },
-            {
-              "kind": "Content",
-              "text": "symbol"
-            },
-            {
-              "kind": "Content",
-              "text": ";"
-            }
-          ],
-          "releaseTag": "Public",
-          "name": "ScopedId",
-          "typeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 2
-          }
-        },
-        {
           "kind": "Function",
           "canonicalReference": "@axlejs/split-layout!useLayout:function(1)",
           "docComment": "/**\n * useLayout\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "declare function useLayout(elements: "
+              "text": "export declare function useLayout(elements: "
             },
             {
               "kind": "Reference",

@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import useLayout from '@axlejs/split-layout'
+import { useLayout } from '@axlejs/split-layout'
 
 export default {
   name: 'SplitLayout',
   setup() {
-    useLayout()
+    useLayout('text', { api: 1 })
   }
 }
 </script>
