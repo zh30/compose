@@ -1,1 +1,1 @@
-export * from './checker'
+export * from './constants'

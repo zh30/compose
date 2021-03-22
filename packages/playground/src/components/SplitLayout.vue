@@ -1,19 +1,26 @@
 <template>
   <div class="container">
-    <div class="sidebar fill-height"></div>
-    <div class="content fill-height"></div>
+    <div id="sidebar" class="sidebar fill-height"></div>
+    <div id="content" class="content fill-height"></div>
   </div>
 </template>
 
 <script>
+import { defineComponent, nextTick } from 'vue'
+
 import { useLayout } from '@axlejs/split-layout'
 
-export default {
+export default defineComponent({
   name: 'SplitLayout',
   setup() {
-    useLayout('text', { api: 1 })
+
+    nextTick(() => {
+      useLayout(['#sidebar', "#content"])
+    })
+
+    return {}
   }
-}
+})
 </script>
 
 <style>

@@ -12,6 +12,7 @@ import camelCase   from 'lodash/camelCase'
 if (!process.env.TARGET) {
   throw new Error('TARGET package must be specified via --environment flag.')
 }
+const isProduction = process.env.NODE_ENV === 'production'
 
 const pkgsDir = path.resolve(__dirname, 'packages')
 const pkgDir = path.resolve(pkgsDir, process.env.TARGET)
@@ -25,8 +26,7 @@ const defaultFormats = ['esm', 'umd']
 const inlineFormats = process.env.FORMATS && process.env.FORMATS.split(',')
 const packageFormats = inlineFormats || pkgOptions.formats || defaultFormats
 
-const isProduction = process.env.NODE_ENV === 'production'
-
+let hasTSChecked = false
 const outputConfigs = {
   esm: {
     file: resolve(`dist/${name}.esm.js`),
@@ -59,7 +59,9 @@ if (isProduction) {
 
 export default packageConfigs
 
-function createConfigWithFormat(format) { return createConfig(format, outputConfigs[format])}
+function createConfigWithFormat(format) {
+  return createConfig(format, outputConfigs[format])
+}
 
 function createMinifiedConfig(format) {
   return createConfig(
@@ -89,14 +91,21 @@ function createConfig(format, output, plugins = []) {
   output.sourcemap = !!process.env.SOURCE_MAP
 
   const entryFile = pkgOptions.entry || 'src/index.ts'
-
+  const shouldEmitDeclarations = process.env.TYPES != null && !hasTSChecked
   return {
     input: resolve(entryFile),
     output,
     plugins: [
       json(),
       typescript({
-        tsconfig: resolve('tsconfig.json')
+        check: isProduction && !hasTSChecked,
+        tsconfig: resolve('tsconfig.json'),
+        tsconfigOverride: {
+          compilerOptions: {
+            declaration: shouldEmitDeclarations,
+            declarationMap: shouldEmitDeclarations
+          }
+        }
       }),
       commonjs(),
       replace({
@@ -108,7 +117,8 @@ function createConfig(format, output, plugins = []) {
       ),
       nodeResolve(),
       sourceMaps(),
-      ...plugins
+      ...
+        plugins
     ]
   }
 }
