@@ -1,46 +1,62 @@
 <template>
-  <div class="container">
-    <div id="sidebar" class="sidebar fill-height"></div>
-    <div id="content" class="content fill-height"></div>
-  </div>
+  <split-container
+    class="split-fill split-row"
+    data-gutter="20"
+    data-auto-hide
+    @hide="onHide">
+    <div id="sidebar" class="fill-height" data-split="{size: 100}"></div>
+    <div id="content" class="fill-height"></div>
+    <split-container class="split-fill split-column" data-direction="column">
+      <div id="top" class="fill-height"></div>
+      <div id="middle" class="fill-height"></div>
+      <div id="bottom" class="fill-height"></div>
+    </split-container>
+  </split-container>
 </template>
 
 <script>
-import { defineComponent, nextTick } from 'vue'
-
-import { useLayout } from '@axlejs/split-layout'
+import { defineComponent, onMounted, nextTick, ref } from 'vue'
 
 export default defineComponent({
-  name: 'SplitLayout',
+  name: 'VSplitLayout',
   setup() {
+    function onHide(arg) {
+      console.log('onHide', arg)
+    }
 
-    nextTick(() => {
-      useLayout(['#sidebar', "#content"])
-    })
-
-    return {}
+    return {
+      onHide
+    }
   }
 })
 </script>
 
 <style>
-.container {
-  width: 1366px;
-  height: 768px;
-  display: grid;
-  border: 1px solid red;
-  grid-template-columns: 30% 70%;
-}
 
 .fill-height {
   height: 100%;
 }
 
-.sidebar {
+#sidebar {
+  min-width: 300px;
   background-color: rgb(253, 181, 86);
 }
 
-.content {
+#content {
+  width: 100%;
   background-color: rgb(46, 206, 126);
 }
+
+#top {
+  background-color: red;
+}
+#middle {
+  background-color: yellow;
+  border: 10px solid black;
+  margin: 20px;
+}
+#bottom {
+  background-color: blue;
+}
+
 </style>

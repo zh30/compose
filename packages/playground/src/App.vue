@@ -1,5 +1,7 @@
 <template>
-  <split-layout></split-layout>
+  <div style="height: 900px; width: 1600px; margin: auto" class="">
+    <v-split-layout></v-split-layout>
+  </div>
 </template>
 
 <script>
@@ -10,7 +12,7 @@ import SplitLayoutVue from './components/SplitLayout.vue'
 export default defineComponent({
   name: 'App',
   components: {
-    'split-layout': SplitLayoutVue
+    'v-split-layout': SplitLayoutVue
   }
 })
 </script>
