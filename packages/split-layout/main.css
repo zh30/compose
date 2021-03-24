@@ -1,10 +1,25 @@
-.split-fill { width: 100%; height: 100% }
-.split-inherit { width: inherit; height: inherit }
+.split-fill {
+  width: 100%;
+  height: 100%
+}
+
+.split-inherit {
+  width: inherit;
+  height: inherit
+}
 
 .split-row {
   display: flex;
   flex-direction: row;
 }
+
+.split-row>.split-gutter {
+  height: 100%;
+}
+.split-column>.split-gutter {
+  width: 100%;
+}
+
 .split-column {
   display: flex;
   flex-direction: column;

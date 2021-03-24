@@ -4,11 +4,25 @@
 
 ```ts
 
-// Warning: (ae-forgotten-export) The symbol "elements" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "SplitOptions" needs to be exported by the entry point index.d.ts
-//
-// @public
-export function useLayout(elements: elements, options: SplitOptions): void;
+// @public (undocumented)
+class SplitContainer extends HTMLElement {
+    constructor();
+    // (undocumented)
+    _anglePostion: Map<Node, any>;
+    // (undocumented)
+    collectAnglePosition(): void;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+}
+
+export default SplitContainer;
+
+// @public (undocumented)
+export class SplitGutter extends HTMLElement {
+    constructor();
+}
 
 
 // (No @packageDocumentation comment for this package)

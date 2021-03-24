@@ -1,16 +1,18 @@
 <template>
   <split-container
     class="split-fill split-row"
-    data-gutter="20"
+    data-gutter="40"
     data-auto-hide
     @hide="onHide">
-    <div id="sidebar" class="fill-height" data-split="{size: 100}"></div>
+    <div id="sidebar" class="fill-height"></div>
     <div id="content" class="fill-height"></div>
-    <split-container class="split-fill split-column" data-direction="column">
-      <div id="top" class="fill-height"></div>
-      <div id="middle" class="fill-height"></div>
-      <div id="bottom" class="fill-height"></div>
-    </split-container>
+    <div id="rightbar" class="fill-height" data-split-disable="left|right|both"></div>
+<!--    <div v-if="test"></div>-->
+    <!--    <split-container class="split-fill split-column">-->
+    <!--      <div id="top" class="fill-height"></div>-->
+    <!--      <div id="middle" class="fill-height"></div>-->
+    <!--      <div id="bottom" class="fill-height"></div>-->
+    <!--    </split-container>-->
   </split-container>
 </template>
 
@@ -20,12 +22,20 @@ import { defineComponent, onMounted, nextTick, ref } from 'vue'
 export default defineComponent({
   name: 'VSplitLayout',
   setup() {
+    const test = ref(false)
+
     function onHide(arg) {
       console.log('onHide', arg)
     }
 
+    onMounted(() => {
+      setInterval(() => {
+        test.value = !test.value
+      }, 1000)
+    })
     return {
-      onHide
+      onHide,
+      test
     }
   }
 })
@@ -44,19 +54,33 @@ export default defineComponent({
 
 #content {
   width: 100%;
+  margin: 20px;
   background-color: rgb(46, 206, 126);
+}
+
+#rightbar {
+  width: 400px;
+  background-color: #ec3f3f;
 }
 
 #top {
   background-color: red;
 }
+
 #middle {
   background-color: yellow;
-  border: 10px solid black;
-  margin: 20px;
 }
+
 #bottom {
   background-color: blue;
 }
 
+
+.split-gutter {
+  height: 100%;
+  width: 20px;
+  background-color: orange;
+  cursor: w-resize;
+  position: fixed;
+}
 </style>
