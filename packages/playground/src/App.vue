@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 900px; width: 1600px; margin: auto" class="">
+  <div style="height: 900px; margin: auto" class="">
     <v-split-layout></v-split-layout>
   </div>
 </template>

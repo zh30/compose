@@ -1,26 +1,27 @@
 .split-fill {
   width: 100%;
-  height: 100%
+  height: 100%;
 }
 
 .split-inherit {
   width: inherit;
-  height: inherit
+  height: inherit;
 }
 
-.split-row {
+split-container {
   display: flex;
+  position: relative;
   flex-direction: row;
 }
 
-.split-row>.split-gutter {
-  height: 100%;
-}
-.split-column>.split-gutter {
-  width: 100%;
+split-container[split-direction="column"] {
+  flex-direction: column;
 }
 
-.split-column {
-  display: flex;
-  flex-direction: column;
+split-container[split-direction="row-reverse"] {
+  flex-direction: row-reverse;
+}
+
+split-container[split-direction="column-reverse"] {
+  flex-direction: column-reverse;
 }

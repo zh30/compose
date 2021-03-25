@@ -1,6 +1,6 @@
 <template>
   <split-container
-    class="split-fill split-row"
+    class="split-fill"
     data-gutter="40"
     data-auto-hide
     @hide="onHide">
@@ -48,7 +48,7 @@ export default defineComponent({
 }
 
 #sidebar {
-  min-width: 300px;
+  min-width: 100px;
   background-color: rgb(253, 181, 86);
 }
 
@@ -59,7 +59,7 @@ export default defineComponent({
 }
 
 #rightbar {
-  width: 400px;
+  min-width: 200px;
   background-color: #ec3f3f;
 }
 
@@ -77,10 +77,11 @@ export default defineComponent({
 
 
 .split-gutter {
-  height: 100%;
   width: 20px;
-  background-color: orange;
+  height: 100%;
+  position: absolute;
   cursor: w-resize;
-  position: fixed;
+  background-color: orange;
+  left: 0
 }
 </style>
