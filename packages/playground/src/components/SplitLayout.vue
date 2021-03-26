@@ -1,12 +1,12 @@
 <template>
   <split-container
     class="split-fill"
-    data-gutter="40"
-    data-auto-hide
+    split-gutter="40"
+    :split-auto-hide="false"
     @hide="onHide">
     <div id="sidebar" class="fill-height"></div>
     <div id="content" class="fill-height"></div>
-    <div id="rightbar" class="fill-height" data-split-disable="left|right|both"></div>
+    <div id="rightbar" class="fill-height" split-disable="left|right|both"></div>
 <!--    <div v-if="test"></div>-->
     <!--    <split-container class="split-fill split-column">-->
     <!--      <div id="top" class="fill-height"></div>-->

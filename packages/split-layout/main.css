@@ -25,3 +25,10 @@ split-container[split-direction="row-reverse"] {
 split-container[split-direction="column-reverse"] {
   flex-direction: column-reverse;
 }
+
+.splitter {
+  position: absolute;
+}
+.splitter:hover {
+  cursor: w-resize;
+}
