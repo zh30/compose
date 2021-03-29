@@ -7,23 +7,27 @@ eleGutter.classList.add('splitter')
 //
 // })
 
-function getBrotherDisabled(node: HTMLElement) {
-  const {
-          previousElementSibling: broPrev,
-          nextElementSibling: broNext
-        } = node
-  let enanled: boolean = true
-  let value: any = ''
+class LinkList {
+  private _map: Map<any, any>
 
-  ;[[broPrev, 'right'], [broNext, 'left']].forEach(
-    (group: any): void => {
+  constructor(props: any, props2: any) {
+    console.log(props, props2)
+    this._map = new Map()
+  }
+
+}
+
+function checkDisabled(groups: any): boolean {
+  let enabled: boolean = true
+  groups.forEach(
+    (group: any): any => {
       const [ele, flag] = group
-      if (ele && ele.hasAttribute('split-disabled')) {
-        value = ele.getAttribute('split-disabled')
-        enanled = value !== flag
+      if (enabled && ele && ele.hasAttribute('split-disabled')) {
+        let value: any = ele.getAttribute('split-disabled')
+        if (value === flag || value === 'both') enabled = false
       }
     })
-
+  return enabled
 }
 
 class SplitContainer extends HTMLElement {
@@ -33,6 +37,7 @@ class SplitContainer extends HTMLElement {
   autoHideWidth: number
 
   splitterMap: Map<Node, any>
+
   observer: MutationObserver
 
   // splitterContainer: HTMLElement
@@ -117,7 +122,7 @@ class SplitContainer extends HTMLElement {
         node.clientHeight} -------- ${node.offsetLeft +
         node.clientWidth},${node.offsetTop + node.clientHeight}`)
 
-        const { left, right } = getBrotherDisabled(node)
+        this.getBrotherDisabled(node)
 
       } else {
         if (node.nodeName === '#comment') return
@@ -128,6 +133,44 @@ class SplitContainer extends HTMLElement {
     })
 
     this.observer.observe(this, { childList: true })
+  }
+
+  getBrotherDisabled(node: HTMLElement) {
+    const {
+            previousElementSibling: broPrev,
+            nextElementSibling: broNext
+          } = node
+
+    let left: boolean = false
+    let right: boolean = false
+    if (broPrev) {
+      left = checkDisabled([[broPrev, 'right'], [node, 'left']])
+    }
+    if (broNext) {
+      right = checkDisabled([[node, 'right'], [broNext, 'left']])
+    }
+    console.log('left', left, 'right', right)
+
+    // node1 gutter node2
+    // node1 => gutter, node2 => gutter
+    // gutter => { left: node1, right : node2}
+    let gutter = this.splitterMap.get(node)
+    if (!gutter) gutter = eleGutter.cloneNode()
+
+    let value = this.splitterMap.get(gutter) || { type: 'gutterValue' }
+
+    if (left) {
+      value.left = node
+      this.splitterMap.set(node, gutter)
+    }
+    if (right && broNext) {
+      value.right = broNext
+      this.splitterMap.set(broNext, gutter)
+    }
+
+    this.splitterMap.set(gutter, value)
+    // new LinkList('key', 'value')
+    console.log('this.splitterMap', this.splitterMap)
   }
 
   // lifecycle destroy

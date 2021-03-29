@@ -26,9 +26,9 @@ split-container[split-direction="column-reverse"] {
   flex-direction: column-reverse;
 }
 
-.splitter {
+split-container .splitter {
   position: absolute;
 }
-.splitter:hover {
+split-container .splitter:hover {
   cursor: w-resize;
 }

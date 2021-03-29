@@ -6,7 +6,7 @@
     @hide="onHide">
     <div id="sidebar" class="fill-height"></div>
     <div id="content" class="fill-height"></div>
-    <div id="rightbar" class="fill-height" split-disable="left|right|both"></div>
+    <div id="rightbar" class="fill-height" ></div>
 <!--    <div v-if="test"></div>-->
     <!--    <split-container class="split-fill split-column">-->
     <!--      <div id="top" class="fill-height"></div>-->
